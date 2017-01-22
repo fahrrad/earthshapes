@@ -1,13 +1,26 @@
-<!DOCTYPE html>
 <html>
-	<head>
-		<meta charset=utf-8>
-		<title>My first three.js app</title>
-		<style>
-			body { margin: 0; }
-			canvas { width: 100%; height: 100% }
-		</style>
-	</head>
-	<body>
-	</body>
+  <head>
+    <script src="node_modules/aframe/dist/aframe.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <a-scene>
+	  <a-assets>
+	    <img id="stone" src="stone.jpg">
+	    <img id="sky" src="" >
+	  </a-assets>
+	  <a-box src="#stone" position="0 2 -5" rotation="0 45 45" scale="2 2 2">
+	      <a-animation attribute="position" to="0 2.2 -5" direction="alternate" dur="2000"
+			   repeat="indefinite"></a-animation>
+	  </a-box>
+	  <a-sky color="#222"></a-sky>
+	  <a-plane rotation="-90 0 0"  width="30" height="30" color="brown">
+	  </a-plane>
+	  <a-camera>
+	    <a-cursor></a-cursor>
+	  </a-camera>
+      </a-scene>
+    </a-scene>
+  <body>
+    
 </html>
