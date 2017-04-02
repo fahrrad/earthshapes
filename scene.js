@@ -1,5 +1,8 @@
 
-init();
+
+
+var width = 470;
+var height = 400;
 
 var renderer, scene, camera, cube, pot, wireframe;
 
@@ -8,7 +11,7 @@ function init() {
 
 		// background
 		var backgroundPlaneGeo = new THREE.PlaneGeometry(200,200);
-		var backgroundMaterial = new THREE.MeshBasicMaterial({color: 0xffffff });
+		var backgroundMaterial = new THREE.MeshBasicMaterial({color: 0xffff4f });
 		var backgroundPlane = new THREE.Mesh(backgroundPlaneGeo,
 																				 backgroundMaterial); 
 		backgroundPlane.position.z = -30;
@@ -25,17 +28,17 @@ function init() {
 						wireframe = new THREE.LineSegments( pot, material );
 						wireframe.rotation.x = -1;
 						wireframe.position.y = 2;
-						wireframe.position.x = -20;
+						wireframe.position.x = -10;
 						scene.add( wireframe );
 				}
 		);
 
 
 		camera = new THREE.PerspectiveCamera(50,
-																				 window.innerWidth/window.innerHeight, 0.1, 1000);
+																				 width/height, 0.1, 1000);
 		renderer = new THREE.WebGLRenderer( { antialias: true } );
 
-		renderer.setSize( window.innerWidth, window.innerHeight );
+		renderer.setSize( width, height );
 		document.body.appendChild(renderer.domElement);
 
 		camera.position.z = 40;
@@ -51,4 +54,6 @@ function render() {
 				wireframe.rotation.z += 0.01;
 		}
 }
+
+init();
 render();
