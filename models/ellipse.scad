@@ -4,7 +4,7 @@
      linear_extrude(height = height, center = true, convexity = 10,
 scale=angle) {
         translate([0, 0, 0]){
-            circle(r = 4);
+            circle(r = 4, center=true);
             }
         }
     }

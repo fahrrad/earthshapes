@@ -1,5 +1,22 @@
-difference(){
-    cube(size=[1,1,1], center=true);
-    translate([0,0,0.1])
-        cube(size=[0.9,0.9,1], center=true);
+ $fn=50;
+ module earthsphere (width, height, angle) {
+ scale([1,width,1]){
+     linear_extrude(height = height, center = true, convexity = 10,
+scale=angle) {
+        translate([0, 0, 0]){
+            square(size = 4, center=true);
+            }
+        }
+    }
+ }
+
+module hollow_earthsphere(width, height, angle) {
+    difference(width, height, angle) {
+        earthsphere(width, height, angle);
+        translate([0,0,1])
+        earthsphere(width, height, angle);
+    }
 }
+
+
+hollow_earthsphere(0.5,5,2);

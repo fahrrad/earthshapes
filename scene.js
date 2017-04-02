@@ -2,8 +2,24 @@ function renderPot(parentElement){
 		var width = 470;
 		var height = 400;
 
-		var renderer, scene, camera, cube, pot, wireframe;
-
+		var renderer, scene, camera, cube, pot, wireframe, material;
+		var loader = new THREE.STLLoader();
+		
+		function loadModel(modelFile){
+				loader.load(
+						modelFile,
+						function ( geometry ) {
+								pot = new THREE.EdgesGeometry( geometry );
+								scene.remove(wireframe);
+								wireframe = new THREE.LineSegments( pot, material );
+								wireframe.rotation.x = -1;
+								wireframe.position.y = 2;
+								wireframe.position.x = -10;
+								scene.add( wireframe );
+						}
+				);
+		}
+		
 		function setHeight(x){
 				console.log('set height to ', x);
 		}
@@ -22,6 +38,14 @@ function renderPot(parentElement){
 
 		function setModel(x){
 				console.log('set model to ', x);
+				if(x === 'square'){
+						loadModel('models/square.stl');
+				}
+				else if(x === 'ellipse'){
+						loadModel('models/ellipse.stl');
+				}else{
+						console.error('can only load square or ellipse model');
+				}
 		}
 
 		function init() {
@@ -36,20 +60,10 @@ function renderPot(parentElement){
 				scene.add(backgroundPlane);
 				
 				// Pot
-				var material =
+				material =
 						new THREE.LineBasicMaterial( { color: 0x000000, linewidth: 2 } );
-				var loader = new THREE.STLLoader();
-				loader.load(
-						'models/ellipse.stl',
-						function ( geometry ) {
-								pot = new THREE.EdgesGeometry( geometry );
-								wireframe = new THREE.LineSegments( pot, material );
-								wireframe.rotation.x = -1;
-								wireframe.position.y = 2;
-								wireframe.position.x = -10;
-								scene.add( wireframe );
-						}
-				);
+		
+			
 
 
 				camera = new THREE.PerspectiveCamera(50,
