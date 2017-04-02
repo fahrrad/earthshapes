@@ -19,4 +19,4 @@ module hollow_earthsphere(width, height, angle) {
 }
 
 
-hollow_earthsphere(0.5,10,2);
+hollow_earthsphere(0.5,5,2);
