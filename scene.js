@@ -2,14 +2,14 @@ function renderPot(parentElement){
 		var width = 470;
 		var height = 400;
 
-		var renderer, scene, camera, cube, pot, wireframe, material;
+		var renderer, scene, camera, cube, wireframe, material;
 		var loader = new THREE.STLLoader();
 		
 		function loadModel(modelFile){
 				loader.load(
 						modelFile,
 						function ( geometry ) {
-								pot = new THREE.EdgesGeometry( geometry );
+								var pot = new THREE.EdgesGeometry( geometry );
 								scene.remove(wireframe);
 								wireframe = new THREE.LineSegments( pot, material );
 								wireframe.rotation.x = -1;
@@ -21,19 +21,19 @@ function renderPot(parentElement){
 		}
 		
 		function setHeight(x){
-				console.log('set height to ', x);
+				wireframe.scale.z = x;
 		}
 		function setLength(x){
-				console.log('set length to ', x);
+				wireframe.scale.y = x;
 		}
 		function setWidth(x){
-				console.log('set width to ', x);
+				wireframe.scale.x = x;
 		}
 		function setAngle(x){
-				console.log('set angle to ', x);
-		}
+				console.log('set angle not supported');		}
+
 		function setDiameter(x){
-				console.log('set height to ', x);
+				console.log('use set width and set length');
 		}
 
 		function setModel(x){
@@ -56,7 +56,7 @@ function renderPot(parentElement){
 				var backgroundMaterial = new THREE.MeshBasicMaterial({color: 0xffffff });
 				var backgroundPlane = new THREE.Mesh(backgroundPlaneGeo,
 																						 backgroundMaterial); 
-				backgroundPlane.position.z = -30;
+				backgroundPlane.position.z = -50;
 				scene.add(backgroundPlane);
 				
 				// Pot
