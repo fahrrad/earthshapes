@@ -66,7 +66,7 @@ function renderPot(parentElement){
 				var backgroundPlane = new THREE.Mesh(backgroundPlaneGeo,
 																						 backgroundMaterial);
 
-				var spriteMap = new THREE.TextureLoader().load( "tuindame.jpg" );
+				var spriteMap = new THREE.TextureLoader().load( "tuindame.JPG" );
 				var spriteMaterial = new THREE.SpriteMaterial( { map: spriteMap, color: 0xffffff } );
 				var sprite = new THREE.Sprite( spriteMaterial );
 				sprite.scale.x = 25;
