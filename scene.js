@@ -30,10 +30,11 @@ function renderPot(parentElement){
 				wireframe.scale.x = x;
 		}
 		function setAngle(x){
-				console.log('set angle not supported');		}
+				console.log('set angle not supported');}
 
 		function setDiameter(x){
-				console.log('use set width and set length');
+				setWidth(x);
+				setLength(x);
 		}
 
 		function setModel(x){
@@ -63,9 +64,6 @@ function renderPot(parentElement){
 				material =
 						new THREE.LineBasicMaterial( { color: 0x000000, linewidth: 2 } );
 		
-			
-
-
 				camera = new THREE.PerspectiveCamera(50,
 																						 width/height, 0.1, 1000);
 				renderer = new THREE.WebGLRenderer( { antialias: true } );
@@ -76,9 +74,9 @@ function renderPot(parentElement){
 				camera.position.z = 40;
 				camera.position.y += 10;
 				//camera.lookAt( scene.position );
-				renderer.render(scene, camera);}
-		;
-
+				renderer.render(scene, camera);
+		}
+		
 		function render() {
 				requestAnimationFrame( render );
 				renderer.render( scene, camera );
