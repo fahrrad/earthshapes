@@ -2,7 +2,9 @@ function renderPot(parentElement){
 		var width = 470;
 		var height = 400;
 
-		var renderer, scene, camera, cube, wireframe, material;
+		var renderer, scene, camera, cube, wireframe,
+				material, rotateP;
+		
 		var loader = new THREE.STLLoader();
 		
 		function loadModel(modelFile){
@@ -12,8 +14,8 @@ function renderPot(parentElement){
 								var pot = new THREE.EdgesGeometry( geometry );
 								scene.remove(wireframe);
 								wireframe = new THREE.LineSegments( pot, material );
-								wireframe.rotation.x = -1;
-								wireframe.position.y = 2;
+								wireframe.rotation.x = -1.5;
+								wireframe.position.y = -4;
 								wireframe.position.x = -10;
 								scene.add( wireframe );
 						}
@@ -37,6 +39,10 @@ function renderPot(parentElement){
 				setLength(x);
 		}
 
+		function toggleRotation(){
+				rotateP = !rotateP;
+		}
+
 		function setModel(x){
 				console.log('set model to ', x);
 				if(x === 'square'){
@@ -56,7 +62,18 @@ function renderPot(parentElement){
 				var backgroundPlaneGeo = new THREE.PlaneGeometry(200,200);
 				var backgroundMaterial = new THREE.MeshBasicMaterial({color: 0xffffff });
 				var backgroundPlane = new THREE.Mesh(backgroundPlaneGeo,
-																						 backgroundMaterial); 
+																						 backgroundMaterial);
+
+				var spriteMap = new THREE.TextureLoader().load( "tuindame.jpg" );
+				var spriteMaterial = new THREE.SpriteMaterial( { map: spriteMap, color: 0xffffff } );
+				var sprite = new THREE.Sprite( spriteMaterial );
+				sprite.scale.x = 25;
+				sprite.scale.y = 50;
+				sprite.position.z -= 15;
+				sprite.position.y = 10;
+				sprite.position.x = 10;
+				scene.add( sprite );
+								
 				backgroundPlane.position.z = -50;
 				scene.add(backgroundPlane);
 				
@@ -80,7 +97,7 @@ function renderPot(parentElement){
 		function render() {
 				requestAnimationFrame( render );
 				renderer.render( scene, camera );
-				if(wireframe){
+				if(wireframe && rotateP){
 						wireframe.rotation.z += 0.01;
 				}
 		}
@@ -94,6 +111,7 @@ function renderPot(parentElement){
 				setWidth: setWidth,
 				setAngle: setAngle,
 				setDiameter: setDiameter,
-				setModel: setModel
+				setModel: setModel,
+				toggleRotation: toggleRotation
 		};
 }

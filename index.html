@@ -29,6 +29,7 @@
 						<button type="button" class="btn" onclick="demo1()">demo1</button>
 						<button type="button" class="btn" onclick="demo2()">demo2</button>
 						<button type="button" class="btn" onclick="demo3()">demo3</button>
+						<button type="button" class="btn" onclick="toggleRotation()">toggle rotation</button>
 						
 					</p>
 				</div>
@@ -62,6 +63,12 @@
 			window.callbacks.setHeight(1);
 			window.callbacks.setWidth(1);
 			}
+
+			function toggleRotation() {
+			window.callbacks.toggleRotation();
+			}
+
+			window.callbacks.setModel('square');
 		</script>
 	<body>
 </html>
