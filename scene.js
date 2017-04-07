@@ -18,7 +18,7 @@ function renderPot(parentElement){
 								wireframe = new THREE.LineSegments( pot, material );
 								wireframe.rotation.x = -1.5;
 								wireframe.position.y = -4;
-								wireframe.position.x = -10;
+								wireframe.position.x = -6;
 								scene.add( wireframe );
 						}
 				);
@@ -73,7 +73,7 @@ function renderPot(parentElement){
 				sprite.scale.y = 50;
 				sprite.position.z -= 15;
 				sprite.position.y = 10;
-				sprite.position.x = 10;
+				sprite.position.x = 17;
 				scene.add( sprite );
 								
 				backgroundPlane.position.z = -50;
