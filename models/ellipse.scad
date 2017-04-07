@@ -1,6 +1,6 @@
  $fn=50;
  module earthsphere (width, height, angle) {
- scale([1,width,1]){
+ scale([1,1,1]){
      linear_extrude(height = height, center = true, convexity = 10,
 scale=angle) {
         translate([0, 0, 0]){
@@ -18,5 +18,5 @@ module hollow_earthsphere(width, height, angle) {
     }
 }
 
-
-hollow_earthsphere(0.5,5,2);
+translate([0,0,3])
+    hollow_earthsphere(2,6,2);
