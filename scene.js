@@ -4,6 +4,8 @@ function renderPot(parentElement){
 
 		var renderer, scene, camera, cube, wireframe,
 				material, rotateP;
+
+		rotateP = true;
 		
 		var loader = new THREE.STLLoader();
 		
