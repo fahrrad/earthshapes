@@ -26,6 +26,7 @@
 					<button type="button" class="btn" onclick="loadEllipse()">ellipse</button>
 					</p>
 					<p>
+						<input id="range-slider" type="range" value=1 min=0, max=2 step=0.01 />
 						<button type="button" class="btn" onclick="demo1()">demo1</button>
 						<button type="button" class="btn" onclick="demo2()">demo2</button>
 						<button type="button" class="btn" onclick="demo3()">demo3</button>
@@ -40,6 +41,16 @@
 			var parentElement = document.getElementById('scene');
 			// binding to window for some interactive trying out
 			window.callbacks = renderPot(parentElement);
+
+
+			var rangeSlider = document.getElementById('range-slider');
+			rangeSlider.addEventListener('change', changewidth);
+			function changewidth(e) {
+			window.callbacks.setWidth(e.target.value);
+			window.callbacks.setHeight(e.target.value);
+			window.callbacks.setLength(e.target.value);
+			console.log(e.target.value);
+			}
 
 			function loadEllipse(){
 				window.callbacks.setModel('ellipse');
